@@ -1,7 +1,9 @@
 <?php
 session_start();
+include('httpful.phar');
 include("db/conexao.php");
 include_once("controller/util.php");
+include_once("model/md_usuario.php");
 
 $conexao = new DBConnector();
 

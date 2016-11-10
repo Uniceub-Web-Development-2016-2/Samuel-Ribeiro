@@ -5,17 +5,19 @@
 		header("location: home.php");
 		die;
 
-	}
+}
 
 	$title = ["Novo Post", "Cadastrar VGA", "Gerenciar VGA", "Gerenciar Usuários"];
+	$form = ['novopost', 'cadastrarvga', 'gerenciarvga', 'gerenciarusuarios'];
 
 ?>
+
 <div id="left">
 <div class="container">
 	<div class="title">
 		<?php
 
-		if(isset($_GET['action']) && $_GET['action'] <= 4 && $_GET['action'] >= 0){
+		if(isset($_GET['action']) && $_GET['action'] < count($form) && $_GET['action'] >= 0){
 
 			echo $title[$_GET['action']];
 
@@ -28,9 +30,9 @@
 		?>
 	</div>
 	<div class="content" style="background-color: #fff;">
-		<?php if(isset($_GET['action']) && $_GET['action'] <= 4 && $_GET['action'] >= 0){
+		<?php if(isset($_GET['action']) && $_GET['action'] < count($form) && $_GET['action'] >= 0){
 
-			include_once("_forms/".$_GET['action'].".html");
+			include_once("_forms/".$form[$_GET['action']].".html");
 
 		} else {
 
