@@ -2,6 +2,7 @@
 session_start();
 include_once('../httpful.phar');
 include('../model/md_usuario.php');
+include('../controller/util.php');
 
 if(isset($_POST['logar'])){
 
@@ -10,27 +11,14 @@ if(isset($_POST['logar'])){
 	$response = \Httpful\Request::get($get_request)->send();
 
 	if($response == "[]") {
-		header("Location: ../home.php");
+		header("Location: ../home.php?error=1");
+		die;
 	}
 
-	$tudo = explode(',',str_replace('{','',str_replace('}','',str_replace('[','',str_replace(']','',str_replace('"','',$response))))));
+	$values = responseToArray($response);
 
-	for($i = 1; $i < count($tudo); $i++){
-		$valor[$i] = explode(':',$tudo[$i]); 
-	}
-
-	$counter = 0;
-	for($j = 1; $j < count($valor); $j++){
-		if($j%2 >= 0){
-			$values[$counter] = $valor[$j][1];
-			$counter++;
-		}
-	}
-
-	$usuario = new Usuario($values[0], $values[1], $values[2], $values[3], $values[4], $values[5], $values[6], $values[7]);
-
-	$_SESSION['usuariohb'] = $usuario->getUsuario();
-	$_SESSION['permissao'] = $usuario->getPermissao();
+	$_SESSION['usuariohb'] = $values['usuario'];
+	$_SESSION['permissao'] = $values['permissao'];
 
 	header("Location: ../home.php");
 

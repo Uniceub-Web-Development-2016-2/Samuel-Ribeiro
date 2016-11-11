@@ -6,7 +6,7 @@ class Request{
         private $remote_ip;
         private $resource;
         private $params;
-	private $body;
+	    private $body;
   
 	 public function __construct($method, $protocol, $serverAddress, $clientAddress, $path, $queryString, $body)
     {
@@ -53,10 +53,11 @@ class Request{
                 return $this->remote_ip;
         }
         public function setResource($resource){
-        	$s = explode("?", $resource);
+        $s = explode("?", $resource);
 		$r = explode("/", $s[0]);
 		$this->resource = $r[2];		
-	}
+	    }
+
         public function getResource(){
                 return $this->resource;
         }

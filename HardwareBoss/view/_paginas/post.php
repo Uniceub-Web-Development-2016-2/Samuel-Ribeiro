@@ -20,9 +20,16 @@
 	
 	$_relacionados = $conexao->query("SELECT * FROM tb_posts WHERE (".$filter.") AND id != ".$_GET['postid']);
 	
+	$_comments = $conexao->query("SELECT * FROM tb_comments INNER JOIN tb_users ON tb_users.id = tb_comments.autor WHERE post_id = '".$_GET['postid']."'");
+	
 ?>
 <div id="left">
 	<div class="container">
+	<?php 
+	
+		if($result->rowCount() <= 0) { echo "Postagem não encontrada."; } else {
+	
+	?>
 		<div class="title">
 			<?php echo utf8_decode($row['titulo']); ?>
 		</div>
@@ -33,6 +40,26 @@
 			<i><a href=""><?php echo utf8_decode($row['nome']); ?></a></i>
 			-
 			<?php echo utf8_decode($row['data']); ?>
+		</div>
+
+	</div>
+	<div class="comments">
+		<div class="title">Comentários</div>
+		<div class="content">
+		<?php
+		
+			while($comments = $_comments->fetch(PDO::FETCH_ASSOC)){
+		
+		?>
+			<div class="comment">
+				<div class="title"><div><?php echo $comments['titulo']; ?></div><div class="autor"><a href="#"><?php echo $comments['usuario']; ?></a> - <?php echo $comments['data']; ?></div></div>
+				<div class="content"><?php echo $comments['conteudo']; ?></div>
+			</div>
+		<?php
+		
+			}
+		
+		?>
 		</div>
 	</div>
 </div>
@@ -62,6 +89,11 @@
 					
 				?>
 			</div>
+			<?php
+		
+				}
+				
+			?>
 		</div>
 	</div>
 <div style="clear: both"></div>

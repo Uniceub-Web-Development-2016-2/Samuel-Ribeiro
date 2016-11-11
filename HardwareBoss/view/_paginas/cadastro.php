@@ -7,11 +7,15 @@
 
       }
 ?>
+
+
 <script type="text/javascript">
 jQuery(function($){
    $("#birthdate").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
 });
 </script>
+
+
 
 	<div  style="padding-bottom: 10px;">
       <div class="container">
@@ -23,6 +27,7 @@ jQuery(function($){
             <?php
                   if(isset($_GET['error'])){
             ?>
+            
             <div class="error">
             <?php
                         $error = $_GET['error'];
@@ -43,7 +48,7 @@ jQuery(function($){
                   }
             ?>
 
- 		<form action="scripts/cadastrar.php" method="POST" id="cadastro_form">
+ 		<form action="../APIrest/tb_users" method="POST" id="cadastro_form">
             
             <label for="usuario">Usuário: </label>
             <input type="text" name="usuario" id="usuario" required>
@@ -51,7 +56,7 @@ jQuery(function($){
             <br><br>
 
             <label for="name">Nome: </label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="nome" id="name" required>
 
             <br><br>
   			
@@ -61,7 +66,7 @@ jQuery(function($){
             <br><br>
 
             <label for="senha">Confirmar Senha: </label>
-            <input type="password" name="confirmar" id="senha" required>
+            <input type="password" id="senha" required>
  
             <br><br>
             
@@ -72,20 +77,20 @@ jQuery(function($){
             
             <div class="group">
             <label class="radio" for="gener_m">Masculino </label>
-            <input type="radio" name="gender" id="gener_m" value="m">
+            <input type="radio" name="genero" id="gener_m" value="m">
             
             </div>
             
             <div class="group">
             <label class="radio" for="gener_f">Feminino </label>
-            <input type="radio" name="gender" id="gener_f" value="f">
+            <input type="radio" name="genero" id="gener_f" value="f">
             
             </div>
              
             <br><br>
  
             <label for="birthdate">Data de Nascimento: </label>
-            <input type="text" name="birthdate" id="birthdate" required>
+            <input type="text" name="datanasc" id="birthdate" required>
  
             <br><br>
  

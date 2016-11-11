@@ -30,17 +30,20 @@ class ResourceController
 	}
 	
 	private function create($request) {
-		$body = $request->getBody();
+		//$body = $request->getBody();
+		$body = json_encode($_POST);
 		$resource = $request->getResource();
 		$query = 'INSERT INTO '.$resource.' ('.$this->getColumns($body).') VALUES ('.$this->getValues($body).')';
-		return $query;
-		 
+		$result = (new DBConnector())->query($query);
+		header("location: ../HardwareBoss");
+		return $query;	
 	}
+
 	
 	private function update($request) {
-                $body = $request->getBody();
-                $resource = $request->getResource();
-                $query = 'UPDATE '.$resource.' SET '. $this->getUpdateCriteria($body);
+        $body = $request->getBody();
+        $resource = $request->getResource();
+        $query = 'UPDATE '.$resource.' SET '. $this->getUpdateCriteria($body);
 		return $query;
 
         }
@@ -65,17 +68,17 @@ class ResourceController
 	{
 		$array = json_decode($json, true);
 		$keys = array_keys($array);
+
 		return implode(",", $keys);
 	
 	}
 
 	private function getValues($json) 
         {
-                $array = json_decode($json, true);
-                $keys = array_values($array);
-                $string =  implode("','", $keys);
+        $array = json_decode($json, true);
+        $keys = array_values($array);
+        $string =  implode("','", $keys);
 		return "'".$string."'";
-        
         }
 
 

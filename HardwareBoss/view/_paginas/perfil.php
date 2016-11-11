@@ -4,8 +4,8 @@
 		die;
 	}
 
-	$title = ["Editar Perfil", "Alterar Senha"];
-	$form = ['editarperfil', 'alterarsenha'];
+	$title = ['editarperfil' => "Editar Perfil", 'alterarsenha' => "Alterar Senha"];
+	$form = ['editarperfil' => 'editarperfil', 'alterarsenha' => 'alterarsenha'];
 
 ?>
 
@@ -15,13 +15,13 @@
 	<div class="title">
 		<?php
 
-		if(isset($_GET['action']) && $_GET['action'] < count($form) && $_GET['action'] >= 0){
+		if(isset($_GET['action'])  && in_array($_GET['action'], $form)){
 
 			echo $title[$_GET['action']];
 
 		} else {
 
-			echo "Minha Conta";
+			echo "Bem vindo ao Painel de Controle";
 
 		}
 
@@ -29,14 +29,12 @@
 	</div>
 
 	<div class="content" style="background-color: #fff;">
-		<?php if(isset($_GET['action']) && $_GET['action'] < count($form) && $_GET['action'] >= 0){
+		<?php if(isset($_GET['action']) && in_array($_GET['action'], $form)){
 
 			include_once("_forms/".$form[$_GET['action']].".html");
 
 		} else {
-
-			echo "Bem-vindo ao Painel de Controle";
-
+			echo "Minha Conta";
 		}
 
 		?>
@@ -50,8 +48,8 @@
 			Painel de Controle
 		</div>
 		<div class="content" style="padding: 0">
-			<a href="?pagina=perfil&action=0">Editar Perfil</a>
-			<a href="?pagina=perfil&action=1">Alterar Senha</a>
+			<a href="?pagina=perfil&action=editarperfil">Editar Perfil</a>
+			<a href="?pagina=perfil&action=alterarsenha">Alterar Senha</a>
 
 		</div>
 	</div>

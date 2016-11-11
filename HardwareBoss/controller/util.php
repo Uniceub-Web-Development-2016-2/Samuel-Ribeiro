@@ -23,6 +23,23 @@
 		return $meses[$month[1]-1];
 
 	}
+	
+	function responseToArray($response){
+		
+		$tudo = explode(',',str_replace('{','',str_replace('}','',str_replace('[','',str_replace(']','',str_replace('"','',$response))))));
+
+		for($i = 0; $i < count($tudo); $i++){
+			$valor[$i] = explode(':',$tudo[$i]); 
+		}
+		for($j = 0; $j < count($valor); $j++){
+			if($j%2 >= 0){
+				$values[$valor[$j][0]] = $valor[$j][1];
+			}
+		}
+		
+		return $values;
+		
+	}
 
 
 ?>
