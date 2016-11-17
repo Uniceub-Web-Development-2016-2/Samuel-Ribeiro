@@ -7,14 +7,11 @@
 	
 	$titulo = $_POST['titulo'];
 	$conteudo = $_POST['conteudo'];
-	
-	$lul = $_SESSION['id'];
-	echo $lul;
-	die;
 
 	$conexao = new DBConnector();
 
-	$sql = $conexao->query("INSERT INTO tb_posts(titulo, conteudo) VALUES ('".$titulo."', '".$conteudo."')");
-
+	$sql = $conexao->query("INSERT INTO tb_posts(titulo, conteudo, autor) 
+	VALUES ('".$titulo."', '".$conteudo."', '".$_SESSION['id']."')");
 	}
+
 ?>

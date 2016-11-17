@@ -19,7 +19,8 @@ if(isset($_POST['logar'])){
 
 	$_SESSION['usuariohb'] = $values['usuario'];
 	$_SESSION['permissao'] = $values['permissao'];
-
+	$_SESSION['id'] = $values['id'];
+	
 	header("Location: ../home.php");
 
 }

@@ -32,7 +32,7 @@
 	<div class="content" style="background-color: #fff;">
 		<?php if(isset($_GET['action']) && $_GET['action'] < count($form) && $_GET['action'] >= 0){
 
-			include_once("_forms/".$form[$_GET['action']].".html");
+			include_once("_forms/".$form[$_GET['action']].".php");
 
 		} else {
 

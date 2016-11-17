@@ -26,12 +26,15 @@ $conexao = new DBConnector();
 <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
 <script src="js/scrollCabecalho.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.js" type="text/javascript"></script>
 
 <html lang="pt-br">
 <head>
    <meta charset="UTF-8"/>
    <title>HardwareBoss - <?php echo utf8_decode($titulo); ?></title>
-   <link type="text/css" rel="stylesheet" href="view/_css/estilo.css" />
+   <link type="text/css" rel="stylesheet" href="view/_css/estilo.css"/>
+   <!--<link type="text/css" rel="stylesheet" href="view/_css/bootstrap.css"/>-->
      
 </head>
 
@@ -54,8 +57,8 @@ $conexao = new DBConnector();
      <form method="POST" action="scripts/login.php" id="form_login">
       <input id="input_usuario" type="text" name="usuario" placeholder="Usuário" value="" required>
       <input id="input_senha" type="password" name="senha" placeholder="Senha" value="" required style="margin-top: 20px;">
-	     <?php if(isset($_GET['error']) && $_GET['error'] == 1){ ?>
-	     <span class="error">*Usuário ou senha incorretos.</span>
+	     <?php if(isset($_GET['msg']) && $_GET['msg'] == 1){ ?>
+	     <span class="msg">*Usuário ou senha incorretos.</span>
 	     <?php } ?>
       <a href="?pagina=cadastro">Registrar</a>
       <input id="btn_logar" type="submit" name="logar" value="Entrar" class="btn-padrao" style="margin-top: 10px;">

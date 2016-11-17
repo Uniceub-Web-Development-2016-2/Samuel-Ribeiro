@@ -8,7 +8,6 @@
       }
 ?>
 
-
 <script type="text/javascript">
 jQuery(function($){
    $("#birthdate").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
@@ -25,22 +24,39 @@ jQuery(function($){
 		<div class="content" style="background-color: #FFF;">
 
             <?php
-                  if(isset($_GET['error'])){
+                  if(isset($_GET['msg'])){
             ?>
             
-            <div class="error">
+            <div class="msg">
+            
             <?php
-                        $error = $_GET['error'];
+                        $msg = $_GET['msg'];
 
-                        switch($error){
+                        switch($msg){
                               case 1:
-                                    echo "A senha e a confirmação da senha deve ser iguais!";
                                     break;
                               case 2:
-                                    echo "Por favor, preencha todos os campos!";
+                                    ?>
+                                    <div class="alert alert-danger" role="alert">O seu nome usuário deve ser maior que 5 caracteres!</div>
+                                    <?php
                                     break;
                               case 3:
-                                    echo "O usuário deve conter mais de 5 caracteres!";
+                                    ?>
+                                    <div class="alert alert-danger" role="alert">Confirmar senha esta diferente da senha!</div>
+                                    <?php
+                                    break;
+
+                              case 4:
+                                    ?>
+                                    <div class="alert alert-danger" role="alert">Por favor, preencha todos os campos!</div>
+                                    <?php
+                                    break;  
+
+                              case 5: 
+                                    ?>
+                                    <div class="alert alert-success" role="alert">Usuário criado com sucesso! Bem vindo ao HardwareBOSS!</div>
+                                    <?php
+                                    break;                                                             
                         }
             ?>
             </div>
@@ -48,8 +64,13 @@ jQuery(function($){
                   }
             ?>
 
- 		<form action="../APIrest/tb_users" method="POST" id="cadastro_form">
-            
+ 		<!--<form action="../APIrest/tb_users" method="POST" id="cadastro_form">-->
+            <form action="scripts/cadastrar.php" method="POST" id="cadastro_form">
+
+            <!--<div class="alert alert-success" role="alert">sdasdakdsakosadkosdkaodasokkodaskosda</div>
+            <div class="alert alert-info" role="alert">SDAIJJASIDIJASDJISDAJIASD</div>
+            <div class="alert alert-warning" role="alert">DSAOKKOSDAKODSAOKSDAODAS</div>-->
+
             <label for="usuario">Usuário: </label>
             <input type="text" name="usuario" id="usuario" required>
             
@@ -66,7 +87,7 @@ jQuery(function($){
             <br><br>
 
             <label for="senha">Confirmar Senha: </label>
-            <input type="password" id="senha" required>
+            <input type="password" name="confirmar" id="senha" required>
  
             <br><br>
             
