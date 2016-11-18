@@ -34,8 +34,10 @@
 
 		$sql = $conexao->query("INSERT INTO  tb_vga(nome, bandwidth, boostclock, brand, buswidth, driver, gpu, gpuclock, io, memoryclock, memorysize, minimumpowersupply, model, recommendedpowersupply, releasedate, shaders, technology, transistors, website) VALUES ('".$nome."','".$bandwidth."', '".$boostclock."', '".$brand."', '".$buswidth."', '".$driver."', '".$gpu."', '".$gpuclock."', '".$io."', '".$memoryclock."', '".$memorysize."', '".$minimumpowersupply."', '".$model."', '".$recommendedpowersupply."', '".$releasedate."', '".$shaders."', '".$technology."', '".$transistors."', '".$website."')");
 
+		header('Location: ../home.php?pagina=admin&action=1&msg=2');
+
 }else{
-	echo "dasdsadsadasdas";
+	echo "error";
 }
 
 ?>

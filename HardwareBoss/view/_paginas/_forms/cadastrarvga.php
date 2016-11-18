@@ -1,7 +1,29 @@
-<?php
-	if(isset($_GET['msg'])){
-	}
-?>
+			<?php
+                  if(isset($_GET['msg'])){
+            ?>
+            
+            <div class="msg">
+            
+            <?php
+                       $msg = $_GET['msg'];
+
+                        switch($msg){
+                              case 1:
+                                    break;
+                              case 2:
+                                    ?>
+                                    <div class="alert alert-success" role="alert">VGA cadastrada com sucesso!</div>
+                                    <?php
+                                    break;                                                           
+                        }
+            ?>
+            </div>
+            <?php
+                  }
+            ?>
+
+
+
 
 
 <form method="POST" action="scripts/cadastrarvga.php" id="cadastrovga_form">

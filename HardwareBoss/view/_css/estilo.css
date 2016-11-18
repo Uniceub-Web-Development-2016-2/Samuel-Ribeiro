@@ -613,3 +613,40 @@ div#conteudo{
 .alert-danger .alert-link {
   color: #843534;
 }
+
+
+/*TABELAAAAAA*/
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-family: sans-serif;
+    font-size: 15px;
+    background-color: #333;
+    color: #CCC;
+}
+
+td{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-family: sans-serif;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+    font-family: 25px;
+}
+
+td a{
+  text-decoration: none;
+}
+
+
