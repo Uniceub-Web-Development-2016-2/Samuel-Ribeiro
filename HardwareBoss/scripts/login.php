@@ -11,7 +11,7 @@ if(isset($_POST['logar'])){
 	$response = \Httpful\Request::get($get_request)->send();
 
 	if($response == "[]") {
-		header("Location: ../home.php?error=1");
+		header("Location: ../home.php?msg=1");
 		die;
 	}
 
@@ -20,6 +20,7 @@ if(isset($_POST['logar'])){
 	$_SESSION['usuariohb'] = $values['usuario'];
 	$_SESSION['permissao'] = $values['permissao'];
 	$_SESSION['id'] = $values['id'];
+	$_SESSION['senhahb'] = $values['senha'];
 	
 	header("Location: ../home.php");
 

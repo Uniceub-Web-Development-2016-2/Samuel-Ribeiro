@@ -31,7 +31,7 @@
 	<div class="content" style="background-color: #fff;">
 		<?php if(isset($_GET['action']) && in_array($_GET['action'], $form)){
 
-			include_once("_forms/".$form[$_GET['action']].".html");
+			include_once("_forms/".$form[$_GET['action']].".php");
 
 		} else {
 			echo "Minha Conta";

@@ -56,7 +56,12 @@ jQuery(function($){
                                     ?>
                                     <div class="alert alert-success" role="alert">Usuário criado com sucesso! Bem vindo ao HardwareBOSS!</div>
                                     <?php
-                                    break;                                                             
+                                    break;                                       
+                              case 6:
+                                    ?>
+                                    <div class="alert alert-danger" role="alert">E-mail inválido! Por favor, entre com um e-mail válido.</div>
+                                    <?php
+                                    break;
                         }
             ?>
             </div>
@@ -64,12 +69,7 @@ jQuery(function($){
                   }
             ?>
 
- 		<!--<form action="../APIrest/tb_users" method="POST" id="cadastro_form">-->
             <form action="scripts/cadastrar.php" method="POST" id="cadastro_form">
-
-            <!--<div class="alert alert-success" role="alert">sdasdakdsakosadkosdkaodasokkodaskosda</div>
-            <div class="alert alert-info" role="alert">SDAIJJASIDIJASDJISDAJIASD</div>
-            <div class="alert alert-warning" role="alert">DSAOKKOSDAKODSAOKSDAODAS</div>-->
 
             <label for="usuario">Usuário: </label>
             <input type="text" name="usuario" id="usuario" required>

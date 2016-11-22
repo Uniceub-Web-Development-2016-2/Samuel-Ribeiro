@@ -1,6 +1,7 @@
 <?php
 	
 	include_once('../db/conexao.php');
+	include_once('../controller/util.php');
 
 	if(isset($_POST['usuario']) && isset($_POST['nome']) && isset($_POST['senha']) && isset($_POST['confirmar']) && 
 	isset($_POST['email']) && isset($_POST['genero']) && isset($_POST['datanasc'])){
@@ -13,6 +14,8 @@
 		$email = $_POST['email'];
 		$genero = $_POST['genero'];
 		$datanasc = $_POST['datanasc'];
+
+
 
 		if(strlen($usuario) <= 5){
 		header('Location: ../home.php?pagina=cadastro&msg=2');
@@ -30,7 +33,10 @@
 		die;
 		}
 
-
+		if(validaEmail($email)){
+			header('location: ../home.php?pagina=cadastro&msg=6');
+			die;
+		}
 
 		$conexao = new DBConnector();
 		
