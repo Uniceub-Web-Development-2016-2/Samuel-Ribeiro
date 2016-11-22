@@ -12,7 +12,7 @@ $(document).scroll(function() {
           $('#main_content')
             .css({
               'top': '116px'
-            });
+            })
           $('#loginform')
             .css({
               'width': '500px',

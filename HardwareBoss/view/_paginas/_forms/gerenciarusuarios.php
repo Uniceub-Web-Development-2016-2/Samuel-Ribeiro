@@ -2,7 +2,7 @@
 <?php
 
 	$conexao = new DBConnector();
-	$sql = $conexao->query("SELECT usuario, nome, email, datanasc FROM tb_users");
+	$sql = $conexao->query("SELECT id, usuario, nome, email, datanasc FROM tb_users");
 
 ?>
 

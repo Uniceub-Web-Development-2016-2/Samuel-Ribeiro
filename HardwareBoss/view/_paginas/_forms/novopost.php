@@ -1,6 +1,8 @@
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
 
+
+
 <script type="text/javascript">
 	
 	function changeTitle(){
@@ -29,6 +31,27 @@
 	}
 
 </script>
+
+<?php
+            if(isset($_GET['msg'])){
+            ?>
+            
+            <div class="msg">
+            
+            <?php
+                       $msg = $_GET['msg'];
+                        switch($msg){
+                              case 1:
+                                    ?>
+                                    <div class="alert alert-success" role="alert">POST criado com sucesso!</div>
+                                    <?php
+                                    break;                                                           
+                        }
+            ?>
+            </div>
+            <?php
+            }
+?>
 
 <form method="POST" action="scripts/novopost.php" id="novopost">
 	<label name="titulo">Título:</label>

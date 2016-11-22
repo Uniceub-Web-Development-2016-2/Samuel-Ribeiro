@@ -6,7 +6,6 @@
             
             <?php
                        $msg = $_GET['msg'];
-
                         switch($msg){
                               case 1:
                                     break;
