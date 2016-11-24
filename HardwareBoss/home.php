@@ -8,7 +8,7 @@ include_once("model/md_usuario.php");
 $conexao = new DBConnector();
 
 	$pagina = 'home';
-	$titulo = 'O chefão do hardware';
+	$titulo = utf8_encode('O chefão dos hardware');
 	if(isset($_GET['pagina'])){
 		$sql = $conexao->query("SELECT nome, titulo FROM tb_pagina WHERE nome = '".stripslashes($_GET['pagina'])."';");
 		$row = $sql->fetch(PDO::FETCH_ASSOC);
@@ -17,8 +17,6 @@ $conexao = new DBConnector();
 			$titulo = $row['titulo'];
 		}
 	}
-
-	$titulo = utf8_decode($titulo);
 
 ?>
 

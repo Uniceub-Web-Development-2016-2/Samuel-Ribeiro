@@ -1,7 +1,7 @@
 <?php
 	
-	include_once('../db/conexao.php');
 	include_once('../controller/util.php');
+	include_once('../httpful.phar');
 
 	if(isset($_POST['usuario']) && isset($_POST['nome']) && isset($_POST['senha']) && isset($_POST['confirmar']) && 
 	isset($_POST['email']) && isset($_POST['genero']) && isset($_POST['datanasc'])){
@@ -33,21 +33,31 @@
 		die;
 		}
 
+        /*
 		if(validaEmail($email)){
 			header('location: ../home.php?pagina=cadastro&msg=6');
 			die;
 		}
+		*/
 
-		$conexao = new DBConnector();
+		$register_array = array('usuario' => $usuario, 'nome' => $nome, 'senha' => $senha, 'email' => $email, 'genero' => $genero, 'datanasc' => $datanasc);
+
+		$body = json_encode($register_array);
+		$url = "http://localhost:8080/APIrest/tb_users";
 		
-		$result = $conexao->query("INSERT INTO tb_users (usuario, nome, senha, email, genero, datanasc) VALUES('".$usuario."', '".$nome."', '".$senha."', '".$email."', '".$genero."', '".$datanasc."')");
+		$response = \Httpful\Request::post($url)->sendsJson()->body($body)->send(); 
 
+		$array = json_decode($response->body, true);
 
+		if(!empty($array)){
+		
 		header('Location: ../home.php?pagina=cadastro&msg=5');
-
-		}else{
+		
+		}
+		else{
 			
 		header('Location: ../home.php?pagina=cadastro&msg=2');
 	}
 
+}
 ?> 

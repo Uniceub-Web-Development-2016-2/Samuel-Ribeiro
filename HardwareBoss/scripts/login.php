@@ -10,61 +10,18 @@ if(isset($_POST['logar'])){
 
 	$response = \Httpful\Request::get($get_request)->send();
 
-	if($response == "[]") {
+	$values = json_decode($response->body, true)[0];
+
+	if(!empty($values) && $values["usuario"] == $_POST["usuario"] && $values["senha"] == $values["senha"]){
+ 		$_SESSION['usuariohb'] = $values['usuario'];
+		$_SESSION['permissao'] = $values['permissao'];
+		$_SESSION['id'] = $values['id'];
+	} else {
 		header("Location: ../home.php?msg=1");
-		die;
 	}
-
-	$values = responseToArray($response);
-
-	$_SESSION['usuariohb'] = $values['usuario'];
-	$_SESSION['permissao'] = $values['permissao'];
-	$_SESSION['id'] = $values['id'];
-	$_SESSION['senhahb'] = $values['senha'];
 	
 	header("Location: ../home.php");
 
 }
 
-/*include_once('../db/conexao.php');
-
-$conexao = new DBConnector();
-
-if(isset($_POST['logar'])){
-
-		// RECUPERAR DADOS FORM
-		$usuario = trim(strip_tags($_POST['usuario']));
-		$senha = trim(strip_tags($_POST['senha']));
-
-		// SELECIONAR BANCO DE DADOS
-		$select = "SELECT * FROM tb_users WHERE usuario=:usuario AND senha=:senha";
-
-		try{
-			$result = $conexao->prepare($select);
-			$result->bindParam(':usuario', $usuario, PDO::PARAM_STR);
-			$result->bindParam(':senha', $senha, PDO::PARAM_STR);
-			$result->execute();
-			$row = $result->fetch(PDO::FETCH_ASSOC);
-			$contar = $result->rowCount();
-			
-			if ($contar>0) {
-				
-				$usuario = $_POST['usuario'];
-				$senha = $_POST['senha'];
-
-				$_SESSION['usuariohb'] = $usuario;
-				$_SESSION['senhahb'] = $senha;
-				$_SESSION['permissao'] = $row['permissao'];
-				header('Location: ../home.php');
-				
-			}else{
-				
-				header('Location: ../home.php?error=1');
-				
-			}
-			
-		}catch(PDOException $e){
-			echo $e;
-		}
-	} */
 ?>

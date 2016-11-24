@@ -1,4 +1,4 @@
-			<?php
+		<?php
                   if(isset($_GET['msg'])){
             ?>
             
@@ -12,21 +12,21 @@
                                     break;
                               case 2:
                                     ?>
-                                    <div class="alert alert-success" role="alert">Senha alterada com sucesso!Você será redirecionado. Por favor, entre no sistema com a nova senha.</div>
+                                    <div class="alert alert-success" role="alert">Senha alterada com sucesso!</div>
                                     <?php
                                     break;
                               case 3:
-                              		?>
-                              		<div class="alert alert-danger" role="alert">
-                              		Ops! Essa não é a sua senha atual.</div>
-                              		<?php
-                              		break;
+                              	?>
+                              	<div class="alert alert-danger" role="alert">
+                              	Ops! Essa não é a sua senha atual.</div>
+                              	<?php
+                              	break;
                               case 4:
-                              		?>
-                              		<div class="alert alert-danger" role="alert">
-                              		Ops! A nova senha e confirmar senha tem que ser iguais.
-                              		<?php
-                              		break;
+                              	?>
+                              	<div class="alert alert-danger" role="alert">
+                              	Ops! A nova senha e confirmar senha tem que ser iguais.
+                              	<?php
+                              	break;
 
                         }
             ?>

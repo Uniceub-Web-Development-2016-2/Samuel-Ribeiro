@@ -50,7 +50,3 @@
 	return false;
     }
 }
-
-
-
-?>

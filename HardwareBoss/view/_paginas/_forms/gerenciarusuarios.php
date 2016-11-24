@@ -1,8 +1,13 @@
 
 <?php
 
-	$conexao = new DBConnector();
-	$sql = $conexao->query("SELECT id, usuario, nome, email, datanasc FROM tb_users");
+  include_once('Httpful.phar');
+
+  $get_request = 'http://localhost:8080/APIrest/tb_users/search';
+
+  $response = \Httpful\Request::get($get_request)->send();
+
+  $values = json_decode($response->body, true);
 
 ?>
 
@@ -13,16 +18,19 @@
     <th>E-mail</th>
     <th></th>
   </tr>
-  
-  <?php while($dado = $sql->fetch(PDO::FETCH_ASSOC)){ ?>
+
+
+
+  <?php foreach($values as $user){ ?>
   <tr>
-    <td><?php echo $dado["usuario"]; ?></td>
-    <td><?php echo $dado["nome"]; ?></td>
-    <td><?php echo $dado["email"]; ?></td>
+    <td><?php echo $user["usuario"]; ?></td>
+    <td><?php echo $user["nome"]; ?></td>
+    <td><?php echo $user["email"]; ?></td>
     <td>
-    	<a href="">
-    		<input type="button" name="btnbanir" value="Banir"></input>
-    	</a>
+    <form action="scripts/deletar.php" method="post" style="margin: 0; padding: 0;">
+        <input type="submit" name="btnbanir" value="Deletar"></input>
+        <input name="id" type="hidden" value="<?php echo $user["id"]; ?>" >
+    </form>
     </td>
   </tr>
   <?php } ?>

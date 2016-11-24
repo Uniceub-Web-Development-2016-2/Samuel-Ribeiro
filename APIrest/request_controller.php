@@ -44,7 +44,21 @@ class RequestController
 		return true;
 	}
 
+	public function isValidServerAddress($serverAddress)
+	{
+		return (filter_var($serverAddress, FILTER_VALIDATE_IP) === true || $serverAddress = 'localhost') ? true : false;
+	}
 
+	public function isValidClientAddress($clientAddress)
+	{
+		return (filter_var($clientAddress, FILTER_VALIDATE_IP) === true) ? true : false;
+	}
+
+
+	public function isValidPath($path)
+	{
+		return (filter_var($path, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED) === true) ? true : false;
+	}
 
 	public function execute() {
 		$request = self::create_request($_SERVER);
@@ -52,4 +66,8 @@ class RequestController
 	    return $resource_controller->treat_request($request);
 	}
 
+	public function isValidQueryString($queryString)
+	{
+		return (filter_var($queryString, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) === true) ? true : false;
+	}
 }

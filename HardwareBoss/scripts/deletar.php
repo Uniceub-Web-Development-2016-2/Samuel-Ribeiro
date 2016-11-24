@@ -1,16 +1,21 @@
 <?php
 
-include_once('../db/conexao.php');
+	include_once("../Httpful.phar");
 
-$id = $_GET['id'];
+	if(isset($_POST['id'])){
 
-if(isset($id)){
+		$url = "http://localhost:8080/APIrest/tb_users";
 
-$conexao = new DBConnector();
-$query = $conexao->query('DELETE FROM nome_da_tabela WHERE id="'.$id.'"');
+		$user_array = array('id' => $_POST['id']);
 
-header('Location: ../home.php?pagina=admin&action=3');
-}
+		$body = json_encode($user_array);
+
+		$response = \Httpful\Request::delete($url)->sendsJson()->body($body)->send();
+
+	}
+
+	header('Location: ../home.php?pagina=admin&action=3');
+
 ?>
 
 
