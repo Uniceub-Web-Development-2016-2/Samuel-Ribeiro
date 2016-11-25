@@ -7,6 +7,7 @@ class Request{
         private $resource;
         private $params;
 	    private $body;
+        private $operation;
   
 	 public function __construct($method, $protocol, $serverAddress, $clientAddress, $path, $queryString, $body)
     {
@@ -17,6 +18,7 @@ class Request{
         $this->setResource($path);
         $this->setParams($queryString);
         $this->body = $body;
+        $this->setOperation($path);
     }
 		 
         public function toString(){
@@ -62,7 +64,7 @@ class Request{
                 return $this->resource;
         }
         
-	public function setParams($paramsString)
+	    public function setParams($paramsString)
     	{
         	parse_str($paramsString, $paramsArray);
        		 $this->params = $paramsArray;
@@ -72,9 +74,22 @@ class Request{
                 return $this->params;
         }
 
-	public function getBody() {
-		return $this->body;
-	}
+    	public function getBody() {
+    		return $this->body;
+    	}
+
+        public function setOperation($path) {
+            $s = explode("?", $path);
+            $r = explode("/", $s[0]);
+            if(count($r) >= 4)
+                $this->operation = $r[3];
+            else
+                $this->operation = null;
+        }
+        
+        public function getOperation() {
+            return $this->operation;
+        }
 
 
 

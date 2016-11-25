@@ -1,16 +1,21 @@
 <div id="left">
 <?php
   
-  include_once('db/conexao.php');
-  
-  $conexao = new DBConnector();
- 
-  $sql = $conexao->query("SELECT tb_posts.id, tb_posts.titulo, tb_posts.autor,tb_posts.data, tb_posts.conteudo, tb_posts.imagem, tb_users.nome FROM tb_posts INNER JOIN tb_users ON (tb_users.id = tb_posts.autor) WHERE IsExcluido = false");
+  $get_request = 'http://localhost:8080/APIrest/tb_posts/search';
 
-  while($row = $sql->fetch(PDO::FETCH_ASSOC)){
+  $response = \Httpful\Request::get($get_request)->send();
+
+  $values = json_decode($response->body, true);
+
+  foreach($values as $row){
+
+    $get_autor = 'http://localhost:8080/APIrest/tb_users/search?id='.$row['autor'];
+
+    $resposta = \Httpful\Request::get($get_autor)->send();
+
+    $autor = json_decode($resposta->body, true)[0];
 
 ?>
-
 
 <div class="date">
 <span class="day"><?php echo getDay($row['data']); ?></span>
@@ -42,7 +47,7 @@
     </div>
  
     <div class="autor">Por: <a href="">
-      <?php echo $row['nome']; ?></a>.
+      <?php echo $autor['nome']; ?></a>.
     </div>
 
 </div>
@@ -63,4 +68,4 @@
   </div>
  </div>
  
- <div style="clear: both"></div>
+<div style="clear: both"></div>

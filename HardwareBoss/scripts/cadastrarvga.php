@@ -1,5 +1,5 @@
 <?php
-	include_once("../db/conexao.php");
+	include_once("../httpful.phar");
 	
 	if(isset($_POST['nome']) && isset($_POST['bandwidth']) && isset($_POST['boostclock']) && isset($_POST['brand']) && 
 	isset($_POST['buswidth']) && isset($_POST['driver']) && 
@@ -30,14 +30,23 @@
 		$website = $_POST['website'];
 		//$imagem = $_POST['imagem'];
 
-		$conexao = new DBConnector();
 
-		$sql = $conexao->query("INSERT INTO  tb_vga(nome, bandwidth, boostclock, brand, buswidth, driver, gpu, gpuclock, io, memoryclock, memorysize, minimumpowersupply, model, recommendedpowersupply, releasedate, shaders, technology, transistors, website) VALUES ('".$nome."','".$bandwidth."', '".$boostclock."', '".$brand."', '".$buswidth."', '".$driver."', '".$gpu."', '".$gpuclock."', '".$io."', '".$memoryclock."', '".$memorysize."', '".$minimumpowersupply."', '".$model."', '".$recommendedpowersupply."', '".$releasedate."', '".$shaders."', '".$technology."', '".$transistors."', '".$website."')");
+		$register_array = array('nome' => $nome, 'bandwidth' => $bandwidth, 'boostclock' => $boostclock, 'brand' => $brand, 
+		'buswidth' => $buswidth, 'driver' => $driver, 'gpu' =>$gpu, 'gpuclock' => $gpuclock, 'io' => $io, 'memoryclock' => $memoryclock, 'memorysize' => $memorysize, 'minimumpowersupply' => $minimumpowersupply, 'model' => $model, 'recommendedpowersupply' => $recommendedpowersupply, 'releasedate' => $releasedate, 'shaders' => $shaders, 'technology' => $technology, 'transistors' => $transistors, 'website' => $website);
 
+		$body = json_encode($register_array);
+		$url = "http://localhost:8080/APIrest/tb_vga";
+
+		$response = \Httpful\Request::post($url)->sendsJson()->body($body)->send(); 
+
+		$array = json_decode($response->body, true);
+
+		if(!empty($array)){
+		
 		header('Location: ../home.php?pagina=admin&action=1&msg=2');
+		
+		}
 
-}else{
-	echo "error";
 }
 
 ?>

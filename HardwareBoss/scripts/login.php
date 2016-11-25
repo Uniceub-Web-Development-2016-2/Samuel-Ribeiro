@@ -1,8 +1,6 @@
 <?php
 session_start();
 include_once('../httpful.phar');
-include('../model/md_usuario.php');
-include('../controller/util.php');
 
 if(isset($_POST['logar'])){
 

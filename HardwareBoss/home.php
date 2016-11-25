@@ -1,20 +1,21 @@
 <?php
 session_start();
 include('httpful.phar');
-include("db/conexao.php");
 include_once("controller/util.php");
-include_once("model/md_usuario.php");
-
-$conexao = new DBConnector();
 
 	$pagina = 'home';
 	$titulo = utf8_encode('O chefão dos hardware');
 	if(isset($_GET['pagina'])){
-		$sql = $conexao->query("SELECT nome, titulo FROM tb_pagina WHERE nome = '".stripslashes($_GET['pagina'])."';");
-		$row = $sql->fetch(PDO::FETCH_ASSOC);
-		if($sql->rowCount() > 0){
+	  
+    $get_request = 'http://localhost:8080/APIrest/tb_pagina/search?nome="'.$_GET['pagina'].'"';
+
+    $response = \Httpful\Request::get($get_request)->send();
+
+    $values = json_decode($response->body, true);
+
+		if(count($values) > 0){
 			$pagina = $_GET['pagina'];
-			$titulo = $row['titulo'];
+			$titulo = $values[0]['titulo'];
 		}
 	}
 

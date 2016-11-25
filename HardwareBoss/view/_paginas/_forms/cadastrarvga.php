@@ -22,9 +22,6 @@
             ?>
 
 
-
-
-
 <form method="POST" action="scripts/cadastrarvga.php" id="cadastrovga_form">
 	
 	<label>Nome</label>

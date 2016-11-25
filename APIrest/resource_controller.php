@@ -3,33 +3,35 @@ include_once ('request.php');
 include_once ('db_manager.php');
 class ResourceController
 {
-	//private $connection;
-	//public function __construct() 
-	//{
-	//	$this->connection = new DBConnector();	
-	//}
 		
  	private $METHODMAP = ['GET' => 'search' , 'POST' => 'create' , 'PUT' => 'update', 'DELETE' => 'remove' ];
 	
 	public function treat_request($request) {
+		if($request->getMethod() == "POST" && $request->getOperation() == "custom_query")
+		{
+			return $this->custom_query($request);
+		}
 
 		return $this->{$this->METHODMAP[$request->getMethod()]}($request);
 	
 	}	
 	
 	private function search($request) {
-
 		$params = self::queryParams($request->getParameters());
+		$query = $params == "" ? 'SELECT * FROM '.$request->getResource() : 'SELECT * FROM '.$request->getResource().' WHERE '.$params;
+		$result = (new DBConnector())->query($query);
+		$row = $result->fetchAll(PDO::FETCH_ASSOC);
+		return $row;
+	}
 
-		if($params == "")
-			$query = 'SELECT * FROM '.$request->getResource();
+	private function custom_query($request){
+		$query = json_decode($request->getBody(), true);
+		$result = (new DBConnector())->query($query['query']);
+
+		if(strpos($query['query'], 'SELECT') !== false)
+			return $result->fetchAll(PDO::FETCH_ASSOC);
 		else
-			$query = 'SELECT * FROM '.$request->getResource().' WHERE '.$params;
-
-		$result = (new DBConnector())->query($query); 
-		
-		return $result->fetchAll(PDO::FETCH_ASSOC);
-
+			return $result;
 	}
 	
 	private function create($request) {
@@ -37,7 +39,6 @@ class ResourceController
 		$resource = $request->getResource();
 		$query = 'INSERT INTO '.$resource.' ('.$this->getColumns($body).') VALUES ('.$this->getValues($body).')';
 		return (new DBConnector())->query($query);
-		 
 	}
 	
 	private function update($request) {
