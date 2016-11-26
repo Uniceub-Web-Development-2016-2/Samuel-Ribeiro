@@ -7,7 +7,7 @@ include_once("controller/util.php");
 	$titulo = utf8_encode('O chefão dos hardware');
 	if(isset($_GET['pagina'])){
 	  
-    $get_request = 'http://localhost:8080/APIrest/tb_pagina/search?nome="'.$_GET['pagina'].'"';
+    $get_request = 'http://localhost/APIrest/tb_pagina/search?nome="'.$_GET['pagina'].'"';
 
     $response = \Httpful\Request::get($get_request)->send();
 

@@ -35,7 +35,7 @@
 		'buswidth' => $buswidth, 'driver' => $driver, 'gpu' =>$gpu, 'gpuclock' => $gpuclock, 'io' => $io, 'memoryclock' => $memoryclock, 'memorysize' => $memorysize, 'minimumpowersupply' => $minimumpowersupply, 'model' => $model, 'recommendedpowersupply' => $recommendedpowersupply, 'releasedate' => $releasedate, 'shaders' => $shaders, 'technology' => $technology, 'transistors' => $transistors, 'website' => $website);
 
 		$body = json_encode($register_array);
-		$url = "http://localhost:8080/APIrest/tb_vga";
+		$url = "http://localhost/APIrest/tb_vga";
 
 		$response = \Httpful\Request::post($url)->sendsJson()->body($body)->send(); 
 

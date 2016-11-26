@@ -12,7 +12,7 @@
 		$id = $_SESSION['id'];
 		$user = $_SESSION['usuariohb'];
 
-		$get_request = "http://localhost:8080/APIrest/tb_users/search?id=".$id;
+		$get_request = "http://localhost/APIrest/tb_users/search?id=".$id;
 
 		$response = \Httpful\Request::get($get_request)->send();
 
@@ -28,7 +28,7 @@
 			die;
 		}
 
-		$url = "http://localhost:8080/APIrest/tb_users";
+		$url = "http://localhost/APIrest/tb_users";
 
 		$update = array('senha' => $novasenha2, 'id' => $id);
 

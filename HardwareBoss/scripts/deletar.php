@@ -4,7 +4,7 @@
 
 	if(isset($_POST['id'])){
 
-		$url = "http://localhost:8080/APIrest/tb_users";
+		$url = "http://localhost/APIrest/tb_users";
 
 		$user_array = array('id' => $_POST['id']);
 

@@ -4,7 +4,7 @@
 
 	if(isset($_POST['id'])){
 
-		$url = "http://localhost:8080/APIrest/tb_vga";
+		$url = "http://localhost/APIrest/tb_vga";
 
 		$user_array = array('id' => $_POST['id']);
 

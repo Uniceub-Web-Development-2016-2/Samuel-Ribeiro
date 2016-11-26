@@ -8,7 +8,7 @@
 	//GET POST
     $_query = "SELECT tb_posts.titulo, tb_posts.autor, tb_posts.conteudo, tb_posts.imagem, tb_posts.data, tb_users.nome FROM tb_posts INNER JOIN tb_users ON (tb_users.id = tb_posts.autor) WHERE tb_posts.id = '".$_GET['postid']."'";
 
-    $url = "http://localhost:8080/APIrest/custom/custom_query";
+    $url = "http://localhost/APIrest/custom/custom_query";
 
 	$query = array('query' => $_query);
 
@@ -34,7 +34,7 @@
 	$query = array('query' => $_query);
 
 	$body = json_encode($query);
-	$url = "http://localhost:8080/APIrest/custom/custom_query";
+	$url = "http://localhost/APIrest/custom/custom_query";
 		
 	$response = \Httpful\Request::post($url)->sendsJson()->body($body)->send(); 
 

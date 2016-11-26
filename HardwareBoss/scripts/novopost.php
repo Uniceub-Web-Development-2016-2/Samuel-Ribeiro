@@ -15,7 +15,7 @@
 
 	$body = json_encode($register_array);
 	
-	$url = "http://localhost:8080/APIrest/tb_posts";
+	$url = "http://localhost/APIrest/tb_posts";
 		
 	$response = \Httpful\Request::post($url)->sendsJson()->body($body)->send(); 
 

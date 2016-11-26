@@ -2,7 +2,7 @@
 
   include_once('Httpful.phar');
 
-  $get_request = 'http://localhost:8080/APIrest/tb_vga/search';
+  $get_request = 'http://localhost/APIrest/tb_vga/search';
 
   $response = \Httpful\Request::get($get_request)->send();
 

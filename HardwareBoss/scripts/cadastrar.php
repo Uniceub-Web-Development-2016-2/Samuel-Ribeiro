@@ -43,7 +43,7 @@
 		$register_array = array('usuario' => $usuario, 'nome' => $nome, 'senha' => $senha, 'email' => $email, 'genero' => $genero, 'datanasc' => $datanasc);
 
 		$body = json_encode($register_array);
-		$url = "http://localhost:8080/APIrest/tb_users";
+		$url = "http://localhost/APIrest/tb_users";
 		
 		$response = \Httpful\Request::post($url)->sendsJson()->body($body)->send(); 
 

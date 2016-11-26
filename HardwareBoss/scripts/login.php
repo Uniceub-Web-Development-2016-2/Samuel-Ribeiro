@@ -4,7 +4,7 @@ include_once('../httpful.phar');
 
 if(isset($_POST['logar'])){
 
-	$get_request = 'http://localhost:8080/APIrest/tb_users/search?usuario="'.$_POST['usuario'].'"&senha="'.$_POST['senha'].'"';
+	$get_request = 'http://localhost/APIrest/tb_users/search?usuario="'.$_POST['usuario'].'"&senha="'.$_POST['senha'].'"';
 
 	$response = \Httpful\Request::get($get_request)->send();
 

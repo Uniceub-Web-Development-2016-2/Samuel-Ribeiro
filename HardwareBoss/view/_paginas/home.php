@@ -1,7 +1,7 @@
 <div id="left">
 <?php
   
-  $get_request = 'http://localhost:8080/APIrest/tb_posts/search';
+  $get_request = 'http://localhost/APIrest/tb_posts/search';
 
   $response = \Httpful\Request::get($get_request)->send();
 
@@ -9,7 +9,7 @@
 
   foreach($values as $row){
 
-    $get_autor = 'http://localhost:8080/APIrest/tb_users/search?id='.$row['autor'];
+    $get_autor = 'http://localhost/APIrest/tb_users/search?id='.$row['autor'];
 
     $resposta = \Httpful\Request::get($get_autor)->send();
 
