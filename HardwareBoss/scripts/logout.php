@@ -5,6 +5,6 @@
 	session_unset(['usuariohb']);
 	session_unset(['permissao']);
 
-	header('Location: ../home.php');
+	header('Location: ../index.php');
 	
 ?> 

@@ -1,6 +1,6 @@
 <?php
 	if(!isset($_SESSION['usuariohb'])){
-		(header("location: home.php"));
+		(header("location: index.php"));
 		die;
 	}
 

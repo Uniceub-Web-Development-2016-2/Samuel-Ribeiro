@@ -18,27 +18,21 @@
 
 
 		if(strlen($usuario) <= 5){
-		header('Location: ../home.php?pagina=cadastro&msg=2');
+		header('Location: ../index.php?pagina=cadastro&msg=2');
 		die;
 		}
 
 		if($senha != $confirmar_senha){
-		header('Location: ../home.php?pagina=cadastro&msg=3');
+		header('Location: ../index.php?pagina=cadastro&msg=3');
 		die;
 		}
 
 		
 		if(is_null($usuario) || is_null($nome) || is_null($senha) || is_null($confirmar_senha) || is_null($email) || is_null($genero) || is_null($datanasc)){
-		header('Location: ../home.php?pagina=cadastro&msg=4');
+		header('Location: ../index.php?pagina=cadastro&msg=4');
 		die;
 		}
 
-        /*
-		if(validaEmail($email)){
-			header('location: ../home.php?pagina=cadastro&msg=6');
-			die;
-		}
-		*/
 
 		$register_array = array('usuario' => $usuario, 'nome' => $nome, 'senha' => $senha, 'email' => $email, 'genero' => $genero, 'datanasc' => $datanasc);
 
@@ -51,12 +45,12 @@
 
 		if(!empty($array)){
 		
-		header('Location: ../home.php?pagina=cadastro&msg=5');
+		header('Location: ../index.php?pagina=cadastro&msg=5');
 		
 		}
 		else{
 			
-		header('Location: ../home.php?pagina=cadastro&msg=2');
+		header('Location: ../index.php?pagina=cadastro&msg=2');
 	}
 
 }

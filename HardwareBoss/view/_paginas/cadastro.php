@@ -2,7 +2,7 @@
 
       if(isset($_SESSION['usuariohb'])){
 
-            header("location: home.php?pagina=perfil");
+            header("location: index.php?pagina=perfil");
             die;
 
       }

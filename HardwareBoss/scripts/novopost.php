@@ -1,8 +1,7 @@
-
 <?php
 		
 	session_start();
-	include_once('../Httpful.phar');
+	include_once('../httpful.phar');
 	
 	if(isset($_POST['titulo']) && isset($_POST['conteudo'])){
 	
@@ -21,7 +20,7 @@
 
 	$array = json_decode($response->body, true);
 
-	header('Location: ../home.php?pagina=admin&action=0&msg=1');
+	header('Location: ../index.php?pagina=admin&action=0&msg=1');
 
 	}
 

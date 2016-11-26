@@ -15,10 +15,10 @@ if(isset($_POST['logar'])){
 		$_SESSION['permissao'] = $values['permissao'];
 		$_SESSION['id'] = $values['id'];
 	} else {
-		header("Location: ../home.php?msg=1");
+		header("Location: ../index.php?msg=1");
 	}
 	
-	header("Location: ../home.php");
+	header("Location: ../index.php");
 
 }
 

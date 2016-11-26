@@ -43,7 +43,7 @@
 
 		if(!empty($array)){
 		
-		header('Location: ../home.php?pagina=admin&action=1&msg=2');
+		header('Location: ../index.php?pagina=admin&action=1&msg=2');
 		
 		}
 

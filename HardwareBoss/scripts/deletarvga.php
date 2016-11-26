@@ -1,6 +1,6 @@
 <?php
 
-	include_once("../Httpful.phar");
+	include_once("../httpful.phar");
 
 	if(isset($_POST['id'])){
 
@@ -14,6 +14,6 @@
 
 	}
 
-	header('Location: ../home.php?pagina=admin&action=2');
+	header('Location: ../index.php?pagina=admin&action=2');
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 	
-	include_once("../Httpful.phar");
+	include_once("../httpful.phar");
 	session_start();
 	
 	if(isset($_POST['senha']) && isset($_POST['novasenha1']) && isset($_POST['novasenha2'])){
@@ -19,12 +19,12 @@
 		$response_array = json_decode($response->body, true)[0];
 
 		if($senha != $response_array['senha']){
-			header('Location: ../home.php?pagina=perfil&action=alterarsenha&msg=3');
+			header('Location: ../index.php?pagina=perfil&action=alterarsenha&msg=3');
 			die;
 		}
 
 		if($novasenha1 != $novasenha2){
-			header('Location: ../home.php?pagina=perfil&action=alterarsenha&msg=4');
+			header('Location: ../index.php?pagina=perfil&action=alterarsenha&msg=4');
 			die;
 		}
 
@@ -36,7 +36,7 @@
 
 		$response = \Httpful\Request::put($url)->sendsJson()->body($body)->send();
 
-		header('Location: ../home.php?pagina=perfil&action=alterarsenha&msg=2');
+		header('Location: ../index.php?pagina=perfil&action=alterarsenha&msg=2');
 
 	}
 ?>

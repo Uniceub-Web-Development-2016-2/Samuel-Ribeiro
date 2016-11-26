@@ -2,7 +2,7 @@
 
 	if(!isset($_SESSION['usuariohb']) || $_SESSION['permissao'] > 0){
 
-		header("location: home.php");
+		header("location: index.php");
 		die;
 
 }

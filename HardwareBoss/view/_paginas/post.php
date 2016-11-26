@@ -1,7 +1,7 @@
 <?php
 
 	if(!isset($_GET['postid'])){
-		header("location: home.php");
+		header("location: index.php");
 		die;
 	}
 

@@ -71,9 +71,9 @@ include_once("controller/util.php");
 
   		if($_SESSION['permissao'] == 0){
 
-        echo "<div id=logado><img src=view/_imagens/account_icon.png id=user_img /><span>Bem-vindo, <a href=home.php?pagina=admin>".$_SESSION['usuariohb']."</a></span><a href=scripts/logout.php >Sair</a></div>";
+        echo "<div id=logado><img src=view/_imagens/account_icon.png id=user_img /><span>Bem-vindo, <a href=index.php?pagina=admin>".$_SESSION['usuariohb']."</a></span><a href=scripts/logout.php >Sair</a></div>";
       } else {
-        echo "<div id=logado><img src=view/_imagens/account_icon.png id=user_img /><span>Bem-vindo, <a href=home.php?pagina=perfil>".$_SESSION['usuariohb']."</a></span><a href=scripts/logout.php >Sair</a></div>";
+        echo "<div id=logado><img src=view/_imagens/account_icon.png id=user_img /><span>Bem-vindo, <a href=index.php?pagina=perfil>".$_SESSION['usuariohb']."</a></span><a href=scripts/logout.php >Sair</a></div>";
       }
 
     }
