@@ -1,0 +1,20 @@
+----IP do servidor:
+
+http://www.hardwareboss.tk/HardwareBoss/
+
+----Senha do ADM
+
+admin
+admin
+
+----Funcionalidades 100%
+
+Registrar Usuário
+LOGIN/LOGOUT de Usuário
+Alterar Senha
+Cadastrar Post
+Cadastrar VGA
+Gerenciar VGA
+Gerenciar Usuários
+Post Relacionados
+Comentários(Apenas o script)
